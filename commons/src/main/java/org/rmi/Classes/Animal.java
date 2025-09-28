@@ -1,22 +1,19 @@
-package org.rmi.server.impl;
+package org.rmi.Classes;
 
-import org.rmi.Classes.Specie;
-import org.rmi.Classes.TrackingFiles;
 import org.rmi.Interfaces.IAnimal;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 
-@Service
-public class Animal implements IAnimal{
+
+public class Animal implements IAnimal, Serializable {
     String name;
     String OwnerName;
     TrackingFiles trackingFile;
     Specie specie;
 
 
-    public Animal(@Value("${Animal.name}") String name, @Value("${Animal.ownerName}") String OwnerName) throws RemoteException {
+    public Animal(String name, String OwnerName) throws RemoteException {
         this.name=name;
         this.OwnerName=OwnerName;
         this.trackingFile = new TrackingFiles("Lorem Ipsum");

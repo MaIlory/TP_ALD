@@ -3,22 +3,22 @@ package org.rmi.server.config;
 import java.rmi.Naming;
 import java.util.logging.Logger;
 
-import org.rmi.Interfaces.IAnimal;
+import org.rmi.Interfaces.ICabinet;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.remoting.rmi.RmiServiceExporter;
 import org.springframework.stereotype.Component;
-import org.rmi.server.impl.Animal;
+import org.rmi.server.impl.Cabinet;
 
 // Composant qui s'exécute lors du démarrage de l'application
 @Component
 public class RMIServerApplicationRunner implements ApplicationRunner {
-    private Animal animal;
+    private Cabinet cabinet;
     private Logger logger = Logger.getLogger(this.getClass().getName());
     // Injection de dépendance de Animal
-    public RMIServerApplicationRunner(Animal animal) {
-        this.animal = animal;
+    public RMIServerApplicationRunner(Cabinet cabinet) {
+        this.cabinet = cabinet;
     }
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -31,9 +31,9 @@ public class RMIServerApplicationRunner implements ApplicationRunner {
     @Bean
     RmiServiceExporter helloServiceExporter() {
         RmiServiceExporter exporter = new RmiServiceExporter();
-        exporter.setServiceName(IAnimal.class.getSimpleName()); // Nom du service
-        exporter.setServiceInterface(IAnimal.class); // Interface du service
-        exporter.setService(animal); // Implémentation du service
+        exporter.setServiceName(ICabinet.class.getSimpleName()); // Nom du service
+        exporter.setServiceInterface(ICabinet.class); // Interface du service
+        exporter.setService(cabinet); // Implémentation du service
         exporter.setRegistryPort(1099); // Port pour le registre RMI
         logger.info("Serveur RMI démarré sur le port 1099"); // Journalisation du démarrage du serveur
         return exporter; // Retourne l'exportateur de service RMI

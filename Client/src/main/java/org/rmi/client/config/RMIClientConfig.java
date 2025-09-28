@@ -1,10 +1,11 @@
 package org.rmi.client.config;
 
 import java.util.logging.Logger;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
-import org.rmi.Interfaces.IAnimal;
+import org.rmi.Interfaces.ICabinet;
 
 // Classe de configuration pour le client RMI
 @Configuration
@@ -13,10 +14,10 @@ public class RMIClientConfig {
     // Création d'un proxy pour le service RMI
     @Bean
     RmiProxyFactoryBean proxyFactoryBean() {
-        String rmiServerURL = String.format("rmi://localhost:1099/%s", IAnimal.class.getSimpleName()); // URL du serveur RMI
+        String rmiServerURL = String.format("rmi://localhost:1099/%s", ICabinet.class.getSimpleName()); // URL du serveur RMI
         logger.info("URL du serveur RMI : " + rmiServerURL); // Journalisation de l'URL du serveur
         RmiProxyFactoryBean proxy = new RmiProxyFactoryBean();
-        proxy.setServiceInterface(IAnimal.class); // Définir l'interface du service
+        proxy.setServiceInterface(ICabinet.class); // Définir l'interface du service
         proxy.setServiceUrl(rmiServerURL); // Définir l'URL du service
         proxy.afterPropertiesSet(); // Initialiser le proxy
         return proxy; // Retourner le proxy

@@ -4,7 +4,9 @@ package org.rmi.Interfaces;
 import org.rmi.Classes.Specie;
 import org.rmi.Classes.TrackingFiles;
 
-public interface IAnimal {
+import java.rmi.Remote;
+
+public interface IAnimal extends Remote {
     String getName();
     String getOwnerName();
     TrackingFiles getTrackingFile();
