@@ -27,9 +27,9 @@ public class RMIServerApplicationRunner implements ApplicationRunner {
             System.out.println("Service RMI enregistré : " + serviceName);
         }
     }
-    // Exposition du service HelloService en tant que service RMI
+    // Exposition du service cabinetService en tant que service RMI
     @Bean
-    RmiServiceExporter helloServiceExporter() {
+    RmiServiceExporter cabinetServiceExporter() {
         RmiServiceExporter exporter = new RmiServiceExporter();
         exporter.setServiceName(ICabinet.class.getSimpleName()); // Nom du service
         exporter.setServiceInterface(ICabinet.class); // Interface du service

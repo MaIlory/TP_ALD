@@ -12,6 +12,7 @@ public class ServerApplication {
     public static void main(String[] args) {
 
         System.setProperty("java.security.policy", "server.policy");
+        System.setProperty( "java.rmi.server.codebase", "../../../../");
         SpringApplication.run(ServerApplication.class, args); // Démarre l'application Spring Boot
     }
 
