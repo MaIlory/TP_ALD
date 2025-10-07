@@ -1,6 +1,7 @@
 package org.rmi.client.config;
 
-import org.rmi.Classes.Animal;
+import org.rmi.Interfaces.IAnimal;
+import org.rmi.client.Classes.Mammal;
 import org.rmi.Classes.Specie;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -25,20 +26,20 @@ public class RMIClientApplicationRunner implements ApplicationRunner {
 
         assert serviceCabinet != null;
 
-        Animal animal = serviceCabinet.getAnimal("Tenko");
+        /*IAnimal animal = serviceCabinet.getAnimal("Tenko");
         Specie specie = animal.getSpecie();
 
         System.out.println("Animal Owner Name: " + animal.getOwnerName());
         System.out.println("Specie Name: " + specie.getName());
-
-        Animal animal2 = new Animal("Roger", "David");
+*/
+        Mammal animal2 = new Mammal("Roger", "David");
         animal2.getSpecie().setName("Rabbit");
         animal2.getSpecie().setLifetime(3);
-        animal2.getTrackingFile().setTrackingFileContent("This is the file content of Roger Rabbit.");
+        //animal2.getTrackingFile().setTrackingFileContent("This is the file content of Roger Rabbit.");
 
         serviceCabinet.addAnimal(animal2);
 
-        Animal animal3 = serviceCabinet.getAnimal("Roger");
+        IAnimal animal3 = serviceCabinet.getAnimal("Roger");
         Specie specie3 = animal3.getSpecie();
 
         System.out.println("Animal Owner Name: " + animal3.getOwnerName());

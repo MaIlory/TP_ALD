@@ -4,8 +4,9 @@ import org.rmi.Interfaces.ITrackingFiles;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class TrackingFiles implements ITrackingFiles, Serializable {
+public class TrackingFiles extends UnicastRemoteObject implements ITrackingFiles {
     String fileContent;
 
     public TrackingFiles(String fileContent) throws RemoteException {

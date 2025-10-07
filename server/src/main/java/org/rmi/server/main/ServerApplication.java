@@ -10,9 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ServerApplication {
 
     public static void main(String[] args) {
-
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }
         System.setProperty("java.security.policy", "server.policy");
-        System.setProperty( "java.rmi.server.codebase", "../../../../");
+
         SpringApplication.run(ServerApplication.class, args); // Démarre l'application Spring Boot
     }
 

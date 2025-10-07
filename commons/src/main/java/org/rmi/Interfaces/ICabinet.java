@@ -1,13 +1,12 @@
 package org.rmi.Interfaces;
 
-import org.rmi.Classes.Animal;
-
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface ICabinet {
-    Animal getAnimal(String name) throws RemoteException;
+public interface ICabinet extends Remote {
+    IAnimal getAnimal(String name) throws RemoteException;
 
-    void addAnimal(Animal animal) throws RemoteException;
+    void addAnimal(IAnimal animal) throws RemoteException;
 
-    void removeAnimal(Animal animal) throws RemoteException;
+    void removeAnimal(IAnimal animal) throws RemoteException;
 }
